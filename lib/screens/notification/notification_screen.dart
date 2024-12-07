@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/base_view/base_view.dart';
+import '../../router/app_router.dart';
 import 'notification_view_model.dart';
 
 final _provider = StateNotifierProvider.autoDispose(
@@ -33,4 +34,7 @@ class _NotificationScreenState
       child: Text('Notification screen'),
     );
   }
+
+  @override
+  String get screenName => NotificationRoute.name;
 }

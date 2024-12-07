@@ -28,6 +28,9 @@ class _MainScreenState extends BaseViewState<MainScreen, MainViewModel> {
   PreferredSizeWidget? buildAppBar(BuildContext context) => null;
 
   @override
+  bool get ignoreSafeAreaBottom => false;
+
+  @override
   Widget buildBody(BuildContext context) {
     return AutoTabsScaffold(
       routes: const [
@@ -44,4 +47,7 @@ class _MainScreenState extends BaseViewState<MainScreen, MainViewModel> {
       },
     );
   }
+
+  @override
+  String get screenName => MainRoute.name;
 }

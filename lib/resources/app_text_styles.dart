@@ -22,4 +22,22 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     fontSize: 18,
   );
+
+  static const s16w700 = TextStyle(
+    fontFamily: FontFamily.firaSans,
+    fontWeight: FontWeight.w700,
+    fontSize: 16,
+  );
+
+  static const s30w600 = TextStyle(
+    fontFamily: FontFamily.firaSans,
+    fontWeight: FontWeight.w600,
+    fontSize: 30,
+  );
+
+  static const s20w400 = TextStyle(
+    fontFamily: FontFamily.firaSans,
+    fontWeight: FontWeight.w400,
+    fontSize: 20,
+  );
 }

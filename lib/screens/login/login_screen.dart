@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:base_code_riverpod_flutter/resources/gen/colors.gen.dart';
-import 'package:base_code_riverpod_flutter/router/app_router.dart';
 import 'package:base_code_riverpod_flutter/utilities/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,6 +10,7 @@ import '../../components/buttons/text_hyperlink.dart';
 import '../../components/input_field/text_input_field.dart';
 import '../../resources/app_text_styles.dart';
 import '../../resources/gen/assets.gen.dart';
+import '../../router/app_router.dart';
 import '../../utilities/constants/text_constants.dart';
 import 'login_view_model.dart';
 
@@ -63,8 +63,8 @@ class _LoginScreenState extends BaseViewState<LoginScreen, LoginViewModel> {
           children: [
             SizedBox(height: context.screenHeightRatio * 100),
             Assets.images.facebookLogo.image(
-              width: 80,
-              height: 80,
+              width: 60,
+              height: 60,
               fit: BoxFit.contain,
             ),
             _buildInputView(),
@@ -111,4 +111,7 @@ class _LoginScreenState extends BaseViewState<LoginScreen, LoginViewModel> {
       ],
     );
   }
+
+  @override
+  String get screenName => LoginRoute.name;
 }

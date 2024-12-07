@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 
-import '../../data/providers/progress_hud_manager_provider.dart';
 import '../../utilities/constants/text_constants.dart';
+import '../loading/loading_view_model.dart';
 import 'base_view_mixin.dart';
 import 'base_view_model.dart';
 
@@ -20,8 +20,7 @@ abstract class BaseViewState<View extends BaseView,
 
   ViewModel get viewModel;
 
-  ProgressHudManager get progressHudManager =>
-      ref.watch(progressHudManagerProvider);
+  LoadingStateViewModel get loading => ref.read(loadingStateProvider.notifier);
 
   AlertDialogManager get alertDialogManager =>
       ref.watch(alertDialogManagerProvider);
@@ -53,9 +52,9 @@ abstract class BaseViewState<View extends BaseView,
 
   Future<void> onWhileLoadingData({required Future Function() future}) async {
     Object? error;
-    await progressHudManager.whileLoading(() async {
+    await loading.whileLoading(context, () async {
       try {
-        future;
+        await future();
       } catch (e) {
         error = e;
       }

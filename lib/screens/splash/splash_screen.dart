@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:base_code_riverpod_flutter/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/base_view/base_view.dart';
 import '../../resources/gen/assets.gen.dart';
+import '../../router/app_router.dart';
 import 'splash_view_model.dart';
 
 final _provider = StateNotifierProvider.autoDispose(
@@ -42,10 +42,13 @@ class _SplashScreenState extends BaseViewState<SplashScreen, SplashViewModel> {
   Widget buildBody(BuildContext context) {
     return Center(
       child: Assets.images.facebookLogo.image(
-        width: 80,
-        height: 80,
+        width: 60,
+        height: 60,
         fit: BoxFit.contain,
       ),
     );
   }
+
+  @override
+  String get screenName => SplashRoute.name;
 }

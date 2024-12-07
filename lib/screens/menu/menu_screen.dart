@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/base_view/base_view.dart';
+import '../../router/app_router.dart';
 import 'menu_view_model.dart';
 
 final _provider = StateNotifierProvider.autoDispose(
@@ -31,4 +32,7 @@ class _MenuScreenState extends BaseViewState<MenuScreen, MenuViewModel> {
       child: Text('Menu screen'),
     );
   }
+
+  @override
+  String get screenName => MenuRoute.name;
 }

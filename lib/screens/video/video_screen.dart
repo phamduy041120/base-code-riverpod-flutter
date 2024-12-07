@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/base_view/base_view.dart';
+import '../../router/app_router.dart';
 import 'video_view_model.dart';
 
 final _provider = StateNotifierProvider.autoDispose(
@@ -32,4 +33,7 @@ class _VideoScreenState extends BaseViewState<VideoScreen, VideoViewModel> {
       child: Text('Video screen'),
     );
   }
+
+  @override
+  String get screenName => VideoRoute.name;
 }

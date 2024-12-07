@@ -8,4 +8,11 @@
     <color name="blue">#2196F3</color>
     <color name="greyC4C4C4">#C4C4C4</color>
     <color name="grayFAFAFA">#FAFAFA</color>
+    <color name="grayF2F6FA">#F2F6FA</color>
+    <color name="green">#4CAF50</color>
+    <color name="red">#F44336</color>
+    <color name="purple">#E040FB</color>
+    <color name="grayEDEDED">#EDEDED</color>
+    <color name="grayCCCCCC">#CCCCCC</color>
+    <color name="grey757575">#757575</color>
 </resoures>

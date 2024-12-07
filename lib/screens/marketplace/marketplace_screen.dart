@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/base_view/base_view.dart';
+import '../../router/app_router.dart';
 import 'marketplace_view_model.dart';
 
 final _provider = StateNotifierProvider.autoDispose(
@@ -33,4 +34,7 @@ class _MarketplaceScreenState
       child: Text('Marketplace screen'),
     );
   }
+
+  @override
+  String get screenName => MarketplaceRoute.name;
 }

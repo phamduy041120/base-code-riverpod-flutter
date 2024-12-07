@@ -38,6 +38,8 @@ mixin BaseViewMixin {
 
   Function(bool)? onPopInvoked() => null;
 
+  String get screenName;
+
   Widget buildView(BuildContext context) => _buildContent(context);
 
   Widget _buildContent(BuildContext context) {
