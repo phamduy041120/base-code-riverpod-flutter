@@ -4,8 +4,8 @@
 
 | Tool name      | Version         |
 | -------------- |-----------------|
-| Android Studio | Iguana 2023.2.1 |
-| Xcode          | 15.2            |
+| Android Studio | Iguana 2023.3.1 |
+| Xcode          | 14.0            |
 
 | Programming language | Version |
 | -------------------- |---------|
@@ -53,7 +53,7 @@ This project implements MVVM Design Pattern and uses Riverpod for state manageme
 ### Folder structure
 
 ```
-📁 flutter-base-code-template
+📁 base-code-riverpod-flutter
     |- 📁 assets
         |- 📁 colors
             |- colors.xml
@@ -67,7 +67,7 @@ This project implements MVVM Design Pattern and uses Riverpod for state manageme
     |- 📁 build
     |- 📁 ios
     |- 📁 lib
-        |- 📁 common_widgets
+        |- 📁 components
         |- 📁 data
             |- 📁 models
             |- 📁 providers
@@ -79,7 +79,7 @@ This project implements MVVM Design Pattern and uses Riverpod for state manageme
         |- 📁 screens
             |- 📁 login
                 |- 📁 models
-                |- 📁 widgets
+                |- 📁 components
                 |- login_screen.dart
                 |- login_view_model.dart
                 |- login_state.dart            

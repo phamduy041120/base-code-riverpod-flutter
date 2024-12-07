@@ -8,14 +8,20 @@ import '../../components/base_view/base_view.dart';
 import '../../components/buttons/primary_button.dart';
 import '../../components/buttons/text_hyperlink.dart';
 import '../../components/input_field/text_input_field.dart';
+import '../../data/providers/shared_preferences_repository_provider.dart';
 import '../../resources/app_text_styles.dart';
 import '../../resources/gen/assets.gen.dart';
 import '../../router/app_router.dart';
+import '../../utilities/constants/app_constants.dart';
 import '../../utilities/constants/text_constants.dart';
+import 'login_state.dart';
 import 'login_view_model.dart';
 
-final _provider = StateNotifierProvider.autoDispose(
-  (ref) => LoginViewModel(),
+final _provider = StateNotifierProvider.autoDispose<LoginViewModel, LoginState>(
+  (ref) => LoginViewModel(
+    ref: ref,
+    sharedPreferencesRepository: ref.watch(sharedPreferencesRepositoryProvider),
+  ),
 );
 
 /// Screen code: A_02
@@ -31,6 +37,11 @@ class LoginScreen extends BaseView {
 class _LoginScreenState extends BaseViewState<LoginScreen, LoginViewModel> {
   @override
   LoginViewModel get viewModel => ref.read(_provider.notifier);
+
+  @override
+  bool get tapOutsideToDismissKeyboard => true;
+
+  LoginState get state => ref.watch(_provider);
 
   @override
   PreferredSizeWidget? buildAppBar(BuildContext context) => null;
@@ -71,7 +82,9 @@ class _LoginScreenState extends BaseViewState<LoginScreen, LoginViewModel> {
             const SizedBox(height: 40),
             PrimaryButton(
                 title: TextConstants.login,
+                enable: viewModel.getEnableButton(),
                 onTap: () {
+                  viewModel.setIsFirstRunApp(isFirstRunApp: true);
                   context.router.replace(const MainRoute());
                 }),
           ],
@@ -88,15 +101,37 @@ class _LoginScreenState extends BaseViewState<LoginScreen, LoginViewModel> {
         ),
         TextInputField(
           title: TextConstants.email,
-          onChanged: (String value) {},
+          initialValue: state.email,
+          onChanged: viewModel.onEmailChanged,
+          keyboardType: TextInputType.emailAddress,
+          onValidate: (value) {
+            viewModel.onEmailValidated();
+          },
+          onFocus: viewModel.onEmailFocus,
+          errorText: state.emailError,
+          textInputAction: TextInputAction.done,
+          onEditingComplete: () {
+            dismissKeyboard(context);
+          },
         ),
         const SizedBox(
           height: 20,
         ),
         TextInputField(
           title: TextConstants.password,
+          initialValue: state.password,
           obscureText: true,
-          onChanged: (String value) {},
+          maxLength: AppConstants.maxPasswordLength,
+          onChanged: viewModel.onPasswordChanged,
+          onValidate: (value) {
+            viewModel.onPasswordValidated();
+          },
+          onFocus: viewModel.onPasswordFocus,
+          errorText: state.passwordError,
+          onEditingComplete: () {
+            dismissKeyboard(context);
+          },
+          textInputAction: TextInputAction.done,
         ),
         const SizedBox(
           height: 15,

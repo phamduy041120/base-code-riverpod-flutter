@@ -30,7 +30,6 @@ class ApiRepositoryImpl implements ApiRepository {
   @override
   Future<List<Post>> getPostList() async {
     final postListResponse = await apiPostClient.getPost();
-    print('==>postListResponse: $postListResponse');
 
     /// Save info to session
     sessionRepository.savePostList(postListResponse);

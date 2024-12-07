@@ -33,4 +33,11 @@ class TextConstants {
   static const wow = 'Wow';
   static const sad = 'Sad';
   static const angry = 'Angry';
+
+  /// error message
+  static const msg01 = 'Please choose the answer';
+  static const msg02 = 'Email empty';
+  static const msg03 = 'Invalid email address';
+  static const msg04 = 'Password empty';
+  static const msg05 = 'Password requires 8 characters';
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../components/base_view/base_view.dart';
+import '../../data/providers/shared_preferences_repository_provider.dart';
 import '../../resources/gen/assets.gen.dart';
 import '../../router/app_router.dart';
 import 'splash_view_model.dart';
@@ -29,10 +30,23 @@ class _SplashScreenState extends BaseViewState<SplashScreen, SplashViewModel> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () async {
+      await _bootstrap();
+    });
+  }
+
+  Future<void> _bootstrap() async {
+    final isFirstRunApp =
+        await ref.watch(sharedPreferencesRepositoryProvider).readFirstRunApp();
+    if (!mounted) return;
+    if (isFirstRunApp ?? false) {
+      await AutoRouter.of(context).replace(
+        const MainRoute(),
+      );
+    } else {
       await AutoRouter.of(context).replace(
         const LoginRoute(),
       );
-    });
+    }
   }
 
   @override
