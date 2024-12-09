@@ -4,7 +4,7 @@
 
 | Tool name      | Version         |
 | -------------- |-----------------|
-| Android Studio | Iguana 2023.3.1 |
+| Android Studio | Giraffe 2022.3.1 |
 | Xcode          | 14.0            |
 
 | Programming language | Version |
